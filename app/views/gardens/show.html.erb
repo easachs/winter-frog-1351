@@ -1,0 +1,4 @@
+<h1><%= @garden.name %></h1>
+<div id="plants"><% @garden.fast_plants.each do |plant| %>
+  <%= plant.name %>
+<% end %></div>
