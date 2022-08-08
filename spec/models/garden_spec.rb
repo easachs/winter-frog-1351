@@ -15,8 +15,8 @@ RSpec.describe Garden do
       plot_3 = library_garden.plots.create!(number: 2, size: "Small", direction: "South")
 
       tomato = Plant.create!(name: "Tomato", description: "red", days_to_harvest: 30)
-      squash = Plant.create!(name: "Squash", description: "yellow", days_to_harvest: 100)
-      lettuce = Plant.create!(name: "Lettuce", description: "leafy", days_to_harvest: 120)
+      squash = Plant.create!(name: "Squash", description: "yellow", days_to_harvest: 100) # too slow
+      lettuce = Plant.create!(name: "Lettuce", description: "leafy", days_to_harvest: 120) #too slow
       cucumber = Plant.create!(name: "Cucumber", description: "green", days_to_harvest: 60)
       pepper = Plant.create!(name: "Pepper", description: "spicy", days_to_harvest: 70)
       melon = Plant.create!(name: "Melon", description: "juicy", days_to_harvest: 80)

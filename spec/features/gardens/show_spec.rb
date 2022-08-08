@@ -23,6 +23,7 @@ RSpec.describe 'garden show' do
     PlantPlot.create(plant: tomato, plot: plot_2)
     PlantPlot.create(plant: pepper, plot: plot_2)
     PlantPlot.create(plant: squash, plot: plot_3)
+    PlantPlot.create(plant: melon, plot: plot_3)
 
     visit "/gardens/#{turing_garden.id}"
 
@@ -34,6 +35,14 @@ RSpec.describe 'garden show' do
       expect(page).to_not have_content("Squash")
       expect(page).to_not have_content("Lettuce")
       expect(page).to_not have_content("Melon")
+    end
+
+    visit "/gardens/#{library_garden.id}"
+
+    expect(page).to have_content("Public Library Garden")
+    within "#plants" do
+      expect(page).to have_content("Melon", count: 1)
+      expect(page).to_not have_content("Squash")
     end
   end
 end

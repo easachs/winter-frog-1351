@@ -106,5 +106,25 @@ RSpec.describe 'plots index' do
       expect(page).to have_content("Lettuce")
       expect(page).to_not have_content("Cucumber")
     end
+
+    # only deletes applicable many to many:
+
+    visit '/plots'
+
+    within "#plot-26" do
+      expect(page).to have_content("Plot 26")
+      expect(page).to have_content("Tomato")
+      expect(page).to have_content("Pepper")
+      within "#plant-0" do #tomato
+        click_on "Remove"
+      end
+      expect(current_path).to eq('/plots')
+      expect(page).to_not have_content("Tomato")
+      expect(page).to have_content("Pepper")
+    end
+
+    within "#plot-25" do
+      expect(page).to have_content("Tomato")
+    end
   end
 end

@@ -4,8 +4,8 @@ class PlotsController < ApplicationController
   end
 
   def destroy
-    # require 'pry'; binding.pry
-    PlantPlot.find_by(plant: (params[:id])).destroy
+    PlantPlot.find_by(plant: (params[:id]), plot: (params[:plot_id])).destroy
+    # Plot.find(params[:plot_id]).plant_plots.find_by(plant: (params[:id])).destroy
     redirect_to '/plots'
   end
 end
