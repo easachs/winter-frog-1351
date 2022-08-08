@@ -7,4 +7,13 @@ class Garden < ApplicationRecord
     plants.distinct
     .where('plants.days_to_harvest < 100')
   end
+
+  def fast_sorted
+    plants
+    .where('plants.days_to_harvest < 100')
+    .select('plants.*, count(plants.*)')
+    .group(:id)
+    .distinct
+    .order('count desc')
+  end
 end
